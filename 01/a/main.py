@@ -11,4 +11,4 @@ with open(sys.argv[1]) as f:
 x.sort()
 y.sort()
 
-print(sum(abs(int(xx) - int(yy)) for xx, yy in zip(x, y)))
+print(sum(abs(xx - yy) for xx, yy in zip(x, y)))
