@@ -1,4 +1,4 @@
-FROM gcc:14.2
+FROM gcc:13.2
 
 RUN : \
   && apt-get update \
@@ -7,11 +7,11 @@ RUN : \
   && rm -rf /var/lib/apt/lists/* \
   && :
 
-WORKDIR /usr/src/aoc
-
-ENV PATH=/venv/bin:$PATH PYTHONUNBUFFERED=1
+WORKDIR aoc
 
 COPY requirements.txt .
+
+ENV PATH=/venv/bin:$PATH
 
 RUN : \
   && python3 -m venv /venv \
