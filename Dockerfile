@@ -7,7 +7,7 @@ RUN : \
   && rm -rf /var/lib/apt/lists/* \
   && :
 
-WORKDIR aoc
+WORKDIR /usr/src/aoc
 
 ENV PATH=/venv/bin:$PATH PYTHONUNBUFFERED=1
 

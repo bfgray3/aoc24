@@ -1,6 +1,6 @@
-.PHONY: clean setup solve test all
+.PHONY: all clean setup solve test
 
-CXXFLAGS = -Wall -Wextra -Wshadow -Werror -Wconversion -Wpedantic -std=c++23 -O3
+CXXFLAGS = -Wall -Wconversion -Werror -Wextra -Wpedantic -Wshadow -std=c++23 -O3
 CPPFLAGS = -I./include
 CXX = g++
 SUBDIR = $(dir $(path))
@@ -18,12 +18,12 @@ setup: starter
 	@docker build --pull . -t aoc  # just a single-stage build
 
 solve:
-	@docker run -v $(shell pwd):/aoc --rm aoc:latest ./solve.sh $(SUBDIR)
+	@docker run -v ${PWD}:/usr/src/aoc --rm aoc:latest ./solve.sh $(SUBDIR)
 
 starter: starter.go
 	@go build $<
 
 test:
-	@docker run -v $(shell pwd):/aoc --rm aoc:latest ./test.sh $(SUBDIR)
+	@docker run -v ${PWD}:/usr/src/aoc --rm aoc:latest ./test.sh $(SUBDIR)
 
 all: clean setup test
