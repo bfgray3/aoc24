@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <cmath>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -22,16 +21,12 @@ int main(const int, const char** argv) {
     y.push_back(j);
   }
 
-  std::sort(std::begin(x), std::end(x));
-  std::sort(std::begin(y), std::end(y));
-
   auto answer{std::transform_reduce(
     std::cbegin(x),
     std::cend(x),
-    std::cbegin(y),
     0,
     std::plus<>(),
-    [](const auto first, const auto second) { return std::abs(first - second); }
+    [&y](const auto n) { return n * std::count(std::cbegin(y), std::cend(y), n); }
   )};
 
   std::cout << answer << '\n';
