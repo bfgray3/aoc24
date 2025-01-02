@@ -2,8 +2,8 @@
 #include <cmath>
 #include <fstream>
 #include <functional>
-#include <iostream>
 #include <numeric>
+#include <print>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -34,5 +34,5 @@ int main(const int, const char** argv) {
     [](const auto first, const auto second) { return std::abs(first - second); }
   )};
 
-  std::cout << answer << '\n';
+  std::println("{}", answer);
 }

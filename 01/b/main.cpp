@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <fstream>
 #include <functional>
-#include <iostream>
 #include <numeric>
+#include <print>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -29,5 +29,5 @@ int main(const int, const char** argv) {
     [&y](const auto n) { return n * std::count(std::cbegin(y), std::cend(y), n); }
   )};
 
-  std::cout << answer << '\n';
+  std::println("{}", answer);
 }
